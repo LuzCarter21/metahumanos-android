@@ -8,20 +8,19 @@ import retrofit2.http.Path
 interface AgentService {
 
     @GET("agents")
-    suspend fun allAgents(): List<Agents>
+    suspend fun allAgents(): AgentsResponse
 
-    @GET("/{id}")
-    suspend fun getAgentById(@Path("id")id: String): Agents
+    @GET("agents/{id}")
+    suspend fun getAgentById(@Path("id") id: String): AgentResponse
 
     companion object {
-        fun getInstance(): AgentService{
+        fun getInstance(): AgentService {
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://valorant-api.com/v1/agents/")
+                .baseUrl("https://valorant-api.com/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
             return retrofit.create(AgentService::class.java)
         }
     }
-
 }

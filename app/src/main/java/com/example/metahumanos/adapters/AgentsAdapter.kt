@@ -3,11 +3,11 @@ package com.example.metahumanos.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.metahumanos.data.Agents
+import com.example.metahumanos.data.Agent
 import com.example.metahumanos.databinding.ItemActivityMainBinding
 import com.squareup.picasso.Picasso
 
-class AgentsAdapter (var items: List<Agents>, val OnClickListener: (Int) -> Unit): RecyclerView.Adapter<AgentsViewHolder>(){
+class AgentsAdapter (var items: List<Agent>, val OnClickListener: (Int) -> Unit): RecyclerView.Adapter<AgentsViewHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AgentsViewHolder {
@@ -29,7 +29,7 @@ class AgentsAdapter (var items: List<Agents>, val OnClickListener: (Int) -> Unit
         return items.size
     }
 
-    fun updateItems(items: List<Agents>){
+    fun updateItems(items: List<Agent>){
         this.items = items
         notifyDataSetChanged()
     }
@@ -38,7 +38,7 @@ class AgentsAdapter (var items: List<Agents>, val OnClickListener: (Int) -> Unit
 
 class AgentsViewHolder(val binding: ItemActivityMainBinding): RecyclerView.ViewHolder(binding.root){
 
-    fun render (agents: Agents){
+    fun render (agents: Agent){
         binding.nameAgent.text = agents.name
         Picasso.get().load(agents.mainImageAgentView).into(binding.imageAgent)
     }
